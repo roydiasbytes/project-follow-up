@@ -56,3 +56,8 @@ ipcMain.on('init-ready',(event,data)=>{
     event.sender.send('data-update',data);
   });
 });
+// save data to file
+ipcMain.on('save-data',(event,data)=>{
+  DataWorker.writeData(data);
+  event.sender.send('data-update',data);
+});

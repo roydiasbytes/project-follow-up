@@ -46,12 +46,13 @@ class DataWorker{
         const data = {
             projects:[
                 {
-                name:"Demo Project",
-                customer:"DiASBytes BVBA",
-                deadline:"12-19",
-                status: "new",
-                type:"new business",
-                notes:"new project to get us going"
+                    id:"1",
+                    name:"Demo Project",
+                    customer:"DiASBytes BVBA",
+                    deadline:"12-19",
+                    status: "new",
+                    type:"new business",
+                    notes:"new project to get us going"
                 }
             ]
         };
