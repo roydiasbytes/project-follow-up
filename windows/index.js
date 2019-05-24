@@ -2,6 +2,7 @@
 // be executed in the renderer process for that window.
 // All of the Node.js APIs are available in this process.
 const {ipcRenderer} = require('electron');
+const {BrowserWindow} = require('electron').remote;
 
 // say that I'm done
 ipcRenderer.send("init-ready");
@@ -18,7 +19,26 @@ ipcRenderer.on('data-update',(event,data)=>{
 });
 
 // define btn-new-project
+let newProjectWin;
 const btnNew = document.getElementById('btn-new-project');
 btnNew.addEventListener('click',()=>{
     // open new window to add project
+    if(newProjectWin){
+        newProjectWin.focus();
+    }
+    else{
+        newProjectWin = new BrowserWindow({
+            width: 800,
+            height: 500,
+            webPreferences: {
+                nodeIntegration: true
+            }
+        });
+        newProjectWin.on('close',()=>{
+            newProjectWin = null;
+        });
+        newProjectWin.loadFile('./newProject.html');
+        newProjectWin.show();
+    }
+    
 });

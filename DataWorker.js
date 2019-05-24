@@ -14,7 +14,7 @@ class DataWorker{
                 const dataPath = DataWorker.getDataPath();
                 if(!fs.existsSync(dataPath)){
                     await DataWorker.writeData(DataWorker.getInitData());
-                    resolve({});
+                    resolve(DataWorker.getInitData());
                 }
                 else{
                     let buffer = await readFile(dataPath);
